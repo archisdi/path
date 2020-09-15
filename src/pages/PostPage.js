@@ -11,7 +11,7 @@ const PostPage = (props) => {
 
   useEffect(() => {
     fetch(
-      `https://archisdi-path.firebaseio.com/posts.json${
+      `${process.env.REACT_APP_RESOURCE_URI}${
         withEx ? "" : '?orderBy="ex"&equalTo=false'
       }`
     )
@@ -28,9 +28,9 @@ const PostPage = (props) => {
     const date = moment.unix(post.date).format("DD-MM-YYYY hh:mm");
     const image =
       post.image_url &&
-      `https://firebasestorage.googleapis.com/v0/b/archisdi-path.appspot.com/o/${encodeURIComponent(
-        post.image_url
-      )}?alt=media`;
+      `https://firebasestorage.googleapis.com/v0/b/${
+        process.env.REACT_APP_CLOUD_STORAGE
+      }/o/${encodeURIComponent(post.image_url)}?alt=media`;
     return (
       <Post key={`post-${index}`} caption={post.text} img={image} date={date} />
     );
