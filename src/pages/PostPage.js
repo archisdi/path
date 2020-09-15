@@ -1,3 +1,4 @@
+import { Row } from "antd";
 import * as moment from "moment";
 import React, { useEffect, useState } from "react";
 import Post from "../components/Post";
@@ -35,7 +36,7 @@ const PostPage = (props) => {
     );
   });
 
-  return posts;
+  return <Row>{posts}</Row>;
 };
 
 export default PostPage;

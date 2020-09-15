@@ -1,4 +1,4 @@
-import { Card, Image } from "antd";
+import { Card, Col, Image } from "antd";
 import React from "react";
 import LazyLoad from "react-lazyload";
 import "./Post.css";
@@ -13,25 +13,27 @@ const Post = (props) => {
   );
 
   return (
-    <Card style={{ marginBottom: 30 }} cover={image}>
-      <p
-        style={{
-          textAlign: "left",
-          fontSize: "small",
-        }}
-      >
-        {caption}
-      </p>
-      <p
-        style={{
-          textAlign: "left",
-          fontSize: "x-small",
-          color: "grey",
-        }}
-      >
-        {date}
-      </p>
-    </Card>
+    <Col xl={{ span: 8, offset: 8 }}>
+      <Card style={{ marginBottom: 30 }} cover={image}>
+        <p
+          style={{
+            textAlign: "left",
+            fontSize: "small",
+          }}
+        >
+          {caption}
+        </p>
+        <p
+          style={{
+            textAlign: "left",
+            fontSize: "x-small",
+            color: "grey",
+          }}
+        >
+          {date}
+        </p>
+      </Card>
+    </Col>
   );
 };
 
