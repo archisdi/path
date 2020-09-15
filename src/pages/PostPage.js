@@ -4,7 +4,9 @@ import Post from "../components/Post";
 
 const PostPage = (props) => {
   const [postProp, setPostProp] = useState([]);
-  const withEx = new URLSearchParams(props.location.search).get("ex") || false;
+
+  const withEx =
+    new URLSearchParams(props.location.search).get("ex") === "true";
 
   useEffect(() => {
     fetch(
@@ -19,10 +21,10 @@ const PostPage = (props) => {
           : Object.keys(data).map((item) => data[item]);
         setPostProp(payload);
       });
-  }, [props, withEx]);
+  }, [withEx]);
 
   const posts = postProp.map((post, index) => {
-    const date = moment.unix(post.date).format("DD-MM-YYYY hh:mm:ss");
+    const date = moment.unix(post.date).format("DD-MM-YYYY hh:mm");
     const image =
       post.image_url &&
       `https://firebasestorage.googleapis.com/v0/b/archisdi-path.appspot.com/o/${encodeURIComponent(

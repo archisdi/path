@@ -1,12 +1,16 @@
+import { Card, Image } from "antd";
 import React from "react";
+import LazyLoad from "react-lazyload";
 import "./Post.css";
-import { Card } from "antd";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Post = (props) => {
   const { img, caption, date } = props;
 
-  const image = img && <LazyLoadImage src={img} alt="..." />;
+  const image = img && (
+    <LazyLoad>
+      <Image src={img} />
+    </LazyLoad>
+  );
 
   return (
     <Card style={{ marginBottom: 30 }} cover={image}>
