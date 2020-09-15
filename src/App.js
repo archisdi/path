@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import PostPage from "./pages/PostPage";
+import Logo from "./image/path-outline.png";
 
 const { Header, Content } = Layout;
 
@@ -17,7 +18,11 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <Layout>
-          <Header className="App-header"></Header>
+          <Header className="App-header">
+            <div className="logo">
+              <img width="75" alt="path" src={Logo}></img>
+            </div>
+          </Header>
           <Content style={contentClass}>
             <Switch>
               <Route path="/" component={PostPage}></Route>

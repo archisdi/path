@@ -14,7 +14,11 @@ const Post = (props) => {
 
   return (
     <Col xl={{ span: 8, offset: 8 }}>
-      <Card style={{ marginBottom: 30 }} cover={image}>
+      <Card
+        style={{ marginBottom: 30 }}
+        cover={image}
+        bodyStyle={{ padding: 15 }}
+      >
         <p
           style={{
             textAlign: "left",
