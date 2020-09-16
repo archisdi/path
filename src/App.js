@@ -2,8 +2,8 @@ import { Layout } from "antd";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Logo from "./image/path-outline.png";
 import PostPage from "./pages/PostPage";
+import Logo from "./image/path-outline.png";
 
 const { Header, Content } = Layout;
 
@@ -16,7 +16,7 @@ const App = () => {
             <div className="logo">
               <img
                 style={{ paddingBottom: 5 }}
-                width="80"
+                width="75"
                 alt="path"
                 src={Logo}
               ></img>
@@ -31,7 +31,6 @@ const App = () => {
           >
             <Switch>
               <Route path="/" component={PostPage}></Route>
-              <Route path="/:postId" component={PostPage}></Route>
             </Switch>
           </Content>
         </Layout>

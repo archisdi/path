@@ -10,22 +10,21 @@ const PostPage = (props) => {
     new URLSearchParams(props.location.search).get("ex") === "true";
 
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_RESOURCE_URI}.json${
-        withEx ? "" : '?orderBy="ex"&equalTo=false'
-      }`
-    )
+    fetch(`${process.env.REACT_APP_RESOURCE_URI}.json`)
       .then((response) => response.json())
       .then((data) => {
         const payload = Object.keys(data)
-          .map((item) => data[item])
+          .map((item) => ({
+            ...data[item],
+            ex: withEx ? false : data[item].ex,
+          }))
           .sort((a, b) => b.date - a.date);
         setPostProp(payload);
       });
   }, [withEx]);
 
   const posts = postProp.map((post, index) => {
-    const date = moment.unix(post.date).format("DD-MM-YYYY hh:mm");
+    const date = moment.unix(post.date).format("DD MMM YYYY HH:mm");
     const image =
       post.image_url &&
       `https://firebasestorage.googleapis.com/v0/b/${
@@ -38,6 +37,7 @@ const PostPage = (props) => {
         caption={post.text}
         img={image}
         date={date}
+        ex={post.ex}
       />
     );
   });
