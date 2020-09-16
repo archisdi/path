@@ -11,15 +11,15 @@ const PostPage = (props) => {
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_RESOURCE_URI}${
+      `${process.env.REACT_APP_RESOURCE_URI}.json${
         withEx ? "" : '?orderBy="ex"&equalTo=false'
       }`
     )
       .then((response) => response.json())
       .then((data) => {
-        const payload = Array.isArray(data)
-          ? data
-          : Object.keys(data).map((item) => data[item]);
+        const payload = Object.keys(data)
+          .map((item) => data[item])
+          .sort((a, b) => b.date - a.date);
         setPostProp(payload);
       });
   }, [withEx]);
@@ -32,7 +32,13 @@ const PostPage = (props) => {
         process.env.REACT_APP_CLOUD_STORAGE
       }/o/${encodeURIComponent(post.image_url)}?alt=media`;
     return (
-      <Post key={`post-${index}`} caption={post.text} img={image} date={date} />
+      <Post
+        key={post.id}
+        id={post.id}
+        caption={post.text}
+        img={image}
+        date={date}
+      />
     );
   });
 

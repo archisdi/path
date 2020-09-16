@@ -1,10 +1,9 @@
 import { Card, Col, Image } from "antd";
 import React from "react";
 import LazyLoad from "react-lazyload";
-import "./Post.css";
 
 const Post = (props) => {
-  const { img, caption, date } = props;
+  const { id, img, caption, date } = props;
 
   const image = img && (
     <LazyLoad>
@@ -13,7 +12,12 @@ const Post = (props) => {
   );
 
   return (
-    <Col xl={{ span: 8, offset: 8 }}>
+    <Col
+      xl={{ span: 8, offset: 8 }}
+      lg={{ span: 10, offset: 7 }}
+      md={{ span: 12, offset: 6 }}
+      onClick={() => console.log(id)}
+    >
       <Card
         style={{ marginBottom: 30 }}
         cover={image}
@@ -32,6 +36,7 @@ const Post = (props) => {
             textAlign: "left",
             fontSize: "x-small",
             color: "grey",
+            marginBottom: 0,
           }}
         >
           {date}
