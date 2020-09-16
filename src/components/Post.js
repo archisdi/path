@@ -28,6 +28,8 @@ const Post = (props) => {
       xl={{ span: 8, offset: 8 }}
       lg={{ span: 10, offset: 7 }}
       md={{ span: 12, offset: 6 }}
+      sm={{ span: 24 }}
+      xs={{ span: 24 }}
     >
       <Card
         style={{ marginBottom: 30 }}
