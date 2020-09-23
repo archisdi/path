@@ -2,6 +2,7 @@ import { Row } from "antd";
 import * as moment from "moment";
 import React, { useEffect, useState } from "react";
 import Post from "../components/Post";
+import PlacholderPost from "../components/Placeholder";
 
 const PostPage = (props) => {
   const [postProp, setPostProp] = useState([]);
@@ -42,7 +43,9 @@ const PostPage = (props) => {
     );
   });
 
-  return <Row>{posts}</Row>;
+  return (
+    <Row>{posts.length ? posts : <PlacholderPost count={6} rows={4} />}</Row>
+  );
 };
 
 export default PostPage;

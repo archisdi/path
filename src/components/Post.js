@@ -13,7 +13,12 @@ const Post = (props) => {
         <Skeleton active={!isLoaded} loading={!isLoaded} />
       </Col>
       <LazyLoad>
-        <Image src={img} id={id} onLoad={() => setIsLoaded(true)} />
+        <Image
+          src={img}
+          id={id}
+          style={!isLoaded ? { display: "none" } : {}}
+          onLoad={() => setIsLoaded(true)}
+        />
       </LazyLoad>
     </>
   );
