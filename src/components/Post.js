@@ -1,26 +1,21 @@
-import { Card, Col, Image } from "antd";
-import React from "react";
+import { Card, Col, Image, Skeleton } from "antd";
+import React, { useState } from "react";
 import LazyLoad from "react-lazyload";
 
 const Post = (props) => {
-  const { id, img, caption, date, ex } = props;
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const { id, img, caption, date } = props;
 
   const image = img && (
-    <LazyLoad>
-      {ex ? (
-        <img
-          src={img}
-          style={{
-            maxWidth: "100%",
-            width: "auto ",
-            filter: "blur(5px) grayscale(100%)",
-          }}
-          alt="..."
-        />
-      ) : (
-        <Image src={img} id={id} />
-      )}
-    </LazyLoad>
+    <>
+      <Col offset={1} span={22}>
+        <Skeleton active={!isLoaded} loading={!isLoaded} />
+      </Col>
+      <LazyLoad>
+        <Image src={img} id={id} onLoad={() => setIsLoaded(true)} />
+      </LazyLoad>
+    </>
   );
 
   return (
@@ -44,6 +39,7 @@ const Post = (props) => {
         >
           {caption}
         </p>
+
         <p
           style={{
             textAlign: "left",
