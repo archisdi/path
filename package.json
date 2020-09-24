@@ -50,6 +50,7 @@
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
+    "react-infinite-scroller": "^1.2.4",
     "react-lazy-load-image-component": "^1.5.0",
     "react-lazyload": "^3.0.0",
     "react-router": "^5.2.0",
