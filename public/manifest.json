@@ -3,9 +3,14 @@
   "name": "Path",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicon-256x256.ico",
+      "sizes": "256x256",
       "type": "image/x-icon"
+    },
+    {
+      "src": "logo32.png",
+      "type": "image/png",
+      "sizes": "32x32"
     },
     {
       "src": "logo64.png",
@@ -16,10 +21,15 @@
       "src": "logo128.png",
       "type": "image/png",
       "sizes": "128x128"
+    },
+    {
+      "src": "logo256.png",
+      "type": "image/png",
+      "sizes": "256x256"
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "display": "fullscreen",
+  "theme_color": "#d44834",
+  "background_color": "#d44834"
 }
